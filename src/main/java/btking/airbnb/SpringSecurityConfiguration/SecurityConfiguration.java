@@ -21,6 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -29,6 +30,8 @@ public class SecurityConfiguration {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private  JwtFilter jwtFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -39,7 +42,8 @@ public class SecurityConfiguration {
                         .anyRequest().authenticated()) // Secures every api with Login
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults()) // Enables 3rd party api calls (postman)
-               // .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) With Every request u need to parse your session id
+                // .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) With Every request u need to parse your session id
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
