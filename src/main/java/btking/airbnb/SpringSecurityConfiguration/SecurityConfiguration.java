@@ -1,15 +1,19 @@
 package btking.airbnb.SpringSecurityConfiguration;
 
 
+import jakarta.security.auth.message.config.AuthConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,7 +34,9 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http.csrf(customizer->customizer.disable())
-                .authorizeHttpRequests(request->{request.anyRequest().authenticated();}) // Secures every api with Login
+                .authorizeHttpRequests(request->request
+                        .requestMatchers("user/register","user/login").permitAll()
+                        .anyRequest().authenticated()) // Secures every api with Login
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults()) // Enables 3rd party api calls (postman)
                // .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) With Every request u need to parse your session id
@@ -60,5 +66,10 @@ public class SecurityConfiguration {
         authProvider.setPasswordEncoder(new BCryptPasswordEncoder(12));
         authProvider.setUserDetailsService(userDetailsService);
         return authProvider;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
     }
 }

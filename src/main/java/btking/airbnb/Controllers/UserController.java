@@ -3,6 +3,7 @@ package btking.airbnb.Controllers;
 
 
 import btking.airbnb.Models.User;
+import btking.airbnb.Services.LoginService;
 import btking.airbnb.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,20 +18,15 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private LoginService loginService;
     private BCryptPasswordEncoder Bcrypt_encoder = new BCryptPasswordEncoder(12);
+
     @GetMapping("/get")
     public User getUser(@RequestParam String username) {
         User user =  userService.getUserByUsername(username);
         return user;
 
-    }
-    @PostMapping("/")
-    public User createUser(@RequestBody User user) {
-        System.out.println(user.getEmail());
-        user.setPassword(Bcrypt_encoder.encode(user.getPassword()));
-        userService.register(user);
-        return user;
     }
 
     @GetMapping("/getall")
@@ -39,7 +35,6 @@ public class UserController {
         return users;
 
     }
-
     @GetMapping("/get/{username}")
     public User getUserv2(@PathVariable("username") String username) {
         User user =  userService.getUserByUsername(username);
@@ -47,19 +42,26 @@ public class UserController {
 
     }
 
-    @GetMapping("/hello")
-    public String Hello(){
-        return "Hello";
+//    @PostMapping("/login")
+//    public String Login(@RequestBody User user) {
+//        User login = loginService.LoginByEmailAndPassword(user.getEmail(),Bcrypt_encoder.encode(user.getPassword()));
+//        if(login== null){
+//            System.out.println("No user registered with this email or password : " + user.getEmail());
+//            return "No user registered with this email or password : " + user.getEmail();
+//        }
+//        return "You logged in using " +user.getEmail();
+//
+//    }
+    @PostMapping("/login")
+    public String login(@RequestBody User user) {
+        return loginService.verify(user);
     }
-
-    @GetMapping("/login")
-    public String Login(@RequestParam String email, @RequestParam String password) {
-        UserDetails user = userService.LoginByEmailAndPassword(email,password);
-        if(user == null){
-            return "There was an error in the controller";
-        }
-        return "You logged in using " +user;
-
+    @PostMapping("/register")
+    public User createUser(@RequestBody User user) {
+        System.out.println(user.getEmail());
+        user.setPassword(Bcrypt_encoder.encode(user.getPassword()));
+        userService.register(user);
+        return user;
     }
 
 }
