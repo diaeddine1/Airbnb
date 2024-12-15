@@ -13,6 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,7 +22,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-
+    @Autowired
+    private UserDetailsService userDetailsService;
 
 
     @Bean
@@ -52,11 +54,11 @@ public class SecurityConfiguration {
 //        return new InMemoryUserDetailsManager(user1,user2);
 //    }
 
-//    @Bean
-//    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService) {
-//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//        authProvider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
-//        authProvider.setUserDetailsService(userDetailsService);
-//        return authProvider;
-//    }
+    @Bean
+    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService) {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setPasswordEncoder(new BCryptPasswordEncoder(12));
+        authProvider.setUserDetailsService(userDetailsService);
+        return authProvider;
+    }
 }

@@ -2,8 +2,11 @@ package btking.airbnb.Services;
 
 
 import btking.airbnb.Models.User;
+import btking.airbnb.Models.UserPrincipal;
 import btking.airbnb.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +18,16 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User save(User user) {
+    public UserDetails LoginByEmailAndPassword(String email, String password) {
+        UserDetails userDetails = (UserDetails) userRepository.findByEmailAndPassword(email,password);
+        if (userDetails == null) {
+            return null;
+        }
+        return userDetails;
+    }
+
+
+    public User register(User user) {
         return userRepository.save(user);
     }
 
