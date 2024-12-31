@@ -1,0 +1,56 @@
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+      <h1 class="text-4xl font-bold text-center text-blue-800 mb-6">Welcome to the Demo</h1>
+      <form class="space-y-6" (submit)="Register($event)">
+        <!-- Email Field -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            class="w-full mt-2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            [(ngModel)]="username"
+            name="email"
+            required
+          />
+        </div>
+        <div>
+            <label for="username" class="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              id="username"
+              type="text"
+              placeholder="Enter your username"
+              class="w-full mt-2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              [(ngModel)]="username"
+              name="username"
+              required
+            />
+          </div>
+        <!-- Password Field -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            class="w-full mt-2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </div>
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold p-3 rounded-lg shadow-md hover:from-blue-600 hover:to-blue-700 focus:ring-4 focus:ring-blue-400 focus:outline-none"
+        >
+          Login
+        </button>
+      </form>
+      <p class="text-center text-sm text-gray-500 mt-6">
+        Don't have an account? 
+        <a href="Login" class="text-blue-600 hover:underline">Login</a>      </p>
+    </div>
+  </div>
+  

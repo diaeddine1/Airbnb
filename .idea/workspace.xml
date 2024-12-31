@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3dbb4374-6dfc-45c3-a02d-5d1f899907b6" name="Changes" comment="Added a Cors Configuration Filter that runs before all other filters">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/AirbnbApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Controllers/CommentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Controllers/DishController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Controllers/HouseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Controllers/ImageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Controllers/LocationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Controllers/MessageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Controllers/ReservationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Controllers/RestaurantController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Controllers/ReviewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Controllers/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/DTOS/HouseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/IDao/Idao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Mappers/HouseDTOMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/Dish.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/House.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/Image.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/RegisteredGood.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/RegisteredGoodType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/Reservation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/Restaurant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/Review.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/Service.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Models/UserPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Repositories/CommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Repositories/DishRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Repositories/HouseRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Repositories/ImageRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Repositories/LocationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Repositories/MessageRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Repositories/ReservationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Repositories/RestaurantRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Repositories/ReviewRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Repositories/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/CommentServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/DishServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/HouseServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/ImageServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/JWTService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/LocationServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/LoginService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/MessageServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/ReservationServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/RestaurantServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/ReviewServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/UserDetailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/Services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/SpringSecurityConfiguration/CorsFilterConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/SpringSecurityConfiguration/JwtFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/btking/airbnb/SpringSecurityConfiguration/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/btking/airbnb/AirbnbApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;diaeddine1&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/diaeddine1/Spring-Security.git&quot;,
+    &quot;accountId&quot;: &quot;04696f69-e2f9-4349-b0d7-c5f54bdff63b&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2qEAWDz47JFVW6vaZwA0YfJvKvk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AirbnbApplication.executor&quot;: &quot;Run&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/diaed/.m2/repository/org/projectlombok/lombok/unknown/lombok-unknown.jar.lastUpdated&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="btking.airbnb.SpringSecurityConfiguration" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AirbnbApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="MONGO_DB_URL" value="mongodb+srv://dia:Diaeddine1.@cluster0.yij1jk0.mongodb.net/Airbnb" />
+        <env name="DB_NAME" value="Airbnb" />
+      </envs>
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Airbnb" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="btking.airbnb.AirbnbApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3dbb4374-6dfc-45c3-a02d-5d1f899907b6" name="Changes" comment="" />
+      <created>1734217392311</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1734217392311</updated>
+      <workItem from="1734217393829" duration="8880000" />
+      <workItem from="1734265940451" duration="6948000" />
+      <workItem from="1734272971234" duration="6037000" />
+      <workItem from="1734358953956" duration="9210000" />
+      <workItem from="1734439048160" duration="14298000" />
+      <workItem from="1734481952467" duration="2273000" />
+      <workItem from="1734528075117" duration="4458000" />
+      <workItem from="1734546418953" duration="201000" />
+      <workItem from="1734547054552" duration="1324000" />
+      <workItem from="1734560906507" duration="2084000" />
+      <workItem from="1734571595318" duration="1813000" />
+      <workItem from="1734632806356" duration="3927000" />
+      <workItem from="1734636749412" duration="1169000" />
+      <workItem from="1734942623361" duration="11544000" />
+      <workItem from="1735515411869" duration="3987000" />
+      <workItem from="1735572714434" duration="8945000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added a Spring Security Configuration to secure and test some Local API's">
+      <option name="closed" value="true" />
+      <created>1734222630268</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1734222630268</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added Secure Authentication and JWT generator">
+      <option name="closed" value="true" />
+      <created>1734273491885</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734273491885</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added a JWT filter">
+      <option name="closed" value="true" />
+      <created>1734278466257</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734278466257</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added a Cors Configuration Filter that runs before all other filters">
+      <option name="closed" value="true" />
+      <created>1734529039251</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1734529039251</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added a Spring Security Configuration to secure and test some Local API's" />
+    <MESSAGE value="Added Secure Authentication and JWT generator" />
+    <MESSAGE value="Added a JWT filter" />
+    <MESSAGE value="Added a Cors Configuration Filter that runs before all other filters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a Cors Configuration Filter that runs before all other filters" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.security.authentication.InternalAuthenticationServiceException" package="org.springframework.security.authentication" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

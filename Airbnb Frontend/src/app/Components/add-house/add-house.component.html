@@ -1,0 +1,55 @@
+<form
+  class="w-full bg-slate-700 h-svh flex flex-col items-center gap-y-5"
+>
+  <h1 class="text-4xl text-center p-10 text-white">Register your House to Airbnb</h1>
+
+  <!-- Title Row -->
+  <div class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white">Your Title</label>
+    <input id="title" name="title" class="w-full p-2 rounded-md" type="text"  [(ngModel)]="addedHouse.title"/>
+  </div>
+
+
+  <div class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white">Your Description</label>
+    <input
+    name="description"
+      class="w-full p-2 rounded-md"
+      type="text"
+      placeholder="Enter description"
+      [(ngModel)]="addedHouse.description"
+    />
+  </div>
+  <div class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white">Your Location</label>
+    <input
+    name="location"
+      class="w-full p-2 rounded-md"
+      type="text"
+      placeholder="Enter location"
+      [(ngModel)]="addedHouse.location"
+    />
+  </div>
+<div class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white">Your Price</label>
+    <input
+    name="price"
+      class="w-full p-2 rounded-md"
+      type="number"
+      placeholder="Enter price"
+      [(ngModel)]="addedHouse.price"
+    />
+  </div>
+<div class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white">Your Image</label>
+    <input
+      name='files[]'
+      class="w-full p-2 rounded-md"
+      type="file"
+      
+      (change)="handleFileInput($event)"
+      multiple
+    />
+  </div>
+  <input (click)="Save($event)" class="text-white text-2xl border-2 border-blue-500 p-5 bg-transparent rounded-md w-36" type="submit" value="Save" />
+</form>
