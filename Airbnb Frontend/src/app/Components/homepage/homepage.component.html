@@ -1,47 +1,53 @@
-<Navigation-Bar></Navigation-Bar>
-<Search-Bar></Search-Bar>
+<div class="h-svh w-svw">
+  <Navigation-Bar></Navigation-Bar>
+  <Search-Bar></Search-Bar>
 
-<h1 class="text-5xl">Welcome to Airbnb</h1>
-<div class="flex flex-row w-full h-svh gap-10">
-  @for(house of houses;track house.id){
+  <h1 class="text-5xl">Welcome to Airbnb</h1>
 
-    <div class="w-1/3 h-fit border-2 border-blue-500">
-      @for(image of house.images.src;track $index){
-        <img
-        class="w-full block h-96"
-        [src]="image"
-        alt="{{ house.title }}"
-      />
-
-      }
-       
-        <h1 class="text-2xl font-semibold">{{ house.title }}</h1>
-        <div class="text-xl">{{ house.location }}</div>
-        <span class="text-xl">{{ house.description }}</span>
-        <div class="flex flex-row gap-60">
-          <span class="text-xl">{{ house.rating }}</span>
-          <span class="text-xl">{{ house.price }}</span>
-        </div>
-      </div>
-  
-    
-    <form class="w-full bg-white h-96">
-      <button
-        class="border-2 border-blue-500"
-        type="button"
-        (click)="ngOnInit()"
+  <div class="flex flex-row w-full h-1/2 gap-10 p-2 ">
+    <!-- Loop through houses and create a separate carousel for each house -->
+    <div
+      *ngFor="let house of houses"
+      class="w-1/6 border-solid border-black rounded-md border-2 p-1"
+    >
+      <!-- PrimeNG Carousel (Displays images for this specific house) -->
+      <p-carousel
+        [value]="house.images"
+        [numVisible]="1"
+        [numScroll]="1"
+        [circular]="true"
+        class="w-full"
       >
-        Get Houses
-      </button>
-    </form>
+        <ng-template let-image pTemplate="item">
+          <div class="h-full flex justify-center object-contain">
+            <img [src]="image.src" [alt]="house.title" class="w-full object-cover" />
+          </div>
+        </ng-template>
+      </p-carousel>
 
-  }@empty {
+      <!-- House Title -->
+      
 
-  <h1>No houses Found</h1>
+      <!-- Location -->
+      <div class="text-xl">
+        <span>{{ house.location.country }},{{ house.location.city }}</span>
+        <span></span>
+        <span>{{ house.location.street }}</span>
+      </div>
+      <h1 class="text-2xl font-semibold">{{ house.title }}</h1>
+      <!-- Description -->
+      <span class="text-xl">{{ house.description }}</span>
 
-  }
+      <!-- Rating and Price -->
+      <div class="flex flex-row gap-60">
+        <span class="text-xl">{{ house.rating }}</span>
+        <span class="text-xl">{{ house.price }}</span>
+      </div>
+    </div>
+
+    <!-- No Houses Found Message -->
+    <div *ngIf="houses.length === 0">
+      <h1>No houses Found</h1>
+    </div>
+  </div>
 </div>
-
-<form class="w-full bg-white h-96">
-  <button class="border-2 border-blue-500" type="submit">Get Houses</button>
-</form>

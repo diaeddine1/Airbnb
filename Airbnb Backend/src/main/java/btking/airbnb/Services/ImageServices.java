@@ -40,7 +40,7 @@ public class ImageServices implements Idao<Image> {
                     .imageType(mf.getContentType())
                     .imageName(mf.getOriginalFilename())
                     .imageByte(mf.getBytes())
-                    .house(house)
+                    .registeredGood(house)
                     .build();
             if(saved_Image!=null){
                 imageRepository.save(saved_Image);

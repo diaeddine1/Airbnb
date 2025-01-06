@@ -1,12 +1,26 @@
+<div class="h-svh bg-slate-700">
+  <h1 class="text-4xl text-center p-10 text-white">Register your Service to Airbnb</h1>
+
 <form
   class="w-full bg-slate-700 h-svh flex flex-col items-center gap-y-5"
 >
-  <h1 class="text-4xl text-center p-10 text-white">Register your House to Airbnb</h1>
 
   <!-- Title Row -->
   <div class="w-2/3 flex flex-row items-center gap-x-5">
     <label class="w-1/3 text-right text-white">Your Title</label>
     <input id="title" name="title" class="w-full p-2 rounded-md" type="text"  [(ngModel)]="addedHouse.title"/>
+  </div>
+
+  <div class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white">Your Image</label>
+    <input
+      name='files[]'
+      class="w-full p-2 rounded-md"
+      type="file"
+      
+      (change)="handleFileInput($event)"
+      multiple
+    />
   </div>
 
 
@@ -20,14 +34,75 @@
       [(ngModel)]="addedHouse.description"
     />
   </div>
+
+
+
+  <!-- Load the Google Maps JavaScript API with the Places library -->
+<div id="map" class="map w-[50svw] h-full"></div>
+
+
+
+
+  <div  class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white" for="location-country">Country</label>
+    <input class="w-full p-2 rounded-md" type="text" id="location-country" [(ngModel)]="addedHouse.location.country" name="location-country">
+  </div>
+  
+  <div  class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white" for="location-city">City</label>
+    <input class="w-full p-2 rounded-md" type="text" id="location-city" [(ngModel)]="addedHouse.location.city" name="location-city">
+  </div>
+
+  <div  class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white" for="location-street">Street</label>
+    <input class="w-full p-2 rounded-md" type="text" id="location-street" [(ngModel)]="addedHouse.location.street" name="location-street">
+  </div>
+
+  <div  class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white" for="location-street">Get You Current Location</label>
+    <input class="w-full p-2 rounded-md text-white hover:cursor-pointer border-2 border-solid" type="button" id="location" value="Get Your Current Location"  name="location" (click)="getLocation()">
+  
+  </div>
+
+ 
   <div class="w-2/3 flex flex-row items-center gap-x-5">
-    <label class="w-1/3 text-right text-white">Your Location</label>
+    <label class="w-1/3 text-right text-white">How many Floors</label>
     <input
-    name="location"
+    name="price"
       class="w-full p-2 rounded-md"
-      type="text"
-      placeholder="Enter location"
-      [(ngModel)]="addedHouse.location"
+      type="number"
+      placeholder="Enter price"
+      [(ngModel)]="addedHouse.numberOfFloors"
+    />
+  </div>
+  <div class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white">How many Rooms</label>
+    <input
+    name="price"
+      class="w-full p-2 rounded-md"
+      type="number"
+      placeholder="Enter price"
+      [(ngModel)]="addedHouse.numberOfRooms"
+    />
+  </div>
+  <div class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white">How many Bathrooms</label>
+    <input
+    name="price"
+      class="w-full p-2 rounded-md"
+      type="number"
+      placeholder="Enter price"
+      [(ngModel)]="addedHouse.numberOfBathrooms"
+    />
+  </div>
+  <div class="w-2/3 flex flex-row items-center gap-x-5">
+    <label class="w-1/3 text-right text-white">Maximum Number Of Guests Allowed</label>
+    <input
+    name="price"
+      class="w-full p-2 rounded-md"
+      type="number"
+      placeholder="Enter price"
+      [(ngModel)]="addedHouse.maximumNumberOfGuests"
     />
   </div>
 <div class="w-2/3 flex flex-row items-center gap-x-5">
@@ -40,16 +115,8 @@
       [(ngModel)]="addedHouse.price"
     />
   </div>
-<div class="w-2/3 flex flex-row items-center gap-x-5">
-    <label class="w-1/3 text-right text-white">Your Image</label>
-    <input
-      name='files[]'
-      class="w-full p-2 rounded-md"
-      type="file"
-      
-      (change)="handleFileInput($event)"
-      multiple
-    />
-  </div>
+
   <input (click)="Save($event)" class="text-white text-2xl border-2 border-blue-500 p-5 bg-transparent rounded-md w-36" type="submit" value="Save" />
 </form>
+</div>
+

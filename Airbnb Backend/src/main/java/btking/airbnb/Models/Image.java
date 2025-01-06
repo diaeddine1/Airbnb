@@ -23,13 +23,13 @@ public class Image {
     private byte[] imageByte;
     @JsonBackReference
     @DBRef
-    private House house;
+    private RegisteredGood registeredGood;
 
-    public Image(String imageName, String imageType, byte[] imageByte, House house) {
+    public Image(String imageName, String imageType, byte[] imageByte, RegisteredGood registeredGood) {
         this.imageName = imageName;
         this.imageType = imageType;
         this.imageByte = imageByte;
-        this.house = house;
+        this.registeredGood = getRegisteredGood();
     }
     public Image(String imageName, String imageType, byte[] imageByte) {
         this.imageName = imageName;

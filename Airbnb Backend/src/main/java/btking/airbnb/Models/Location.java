@@ -12,14 +12,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Location {
 
     @Id
     private String id;
+
     private String country;
     private String city;
     private String street;
 
-    @DBRef
-    private RegisteredGood registeredGood;
+    public Location(String country, String city, String street) {
+        this.country = country;
+        this.city = city;
+        this.street = street;
+    }
 }

@@ -45,7 +45,7 @@ public class ImageController {
         }
         System.out.println("house id is "+house.getId());
         Image image1 = imageServices.save(image);
-        image1.setHouse(house);
+        image1.setRegisteredGood(house);
 
         return image1;
 

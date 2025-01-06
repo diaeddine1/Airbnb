@@ -18,7 +18,9 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class House extends RegisteredGood{
+
     private String type;
 
     private Integer numberOfRooms;
@@ -27,5 +29,7 @@ public class House extends RegisteredGood{
     private Integer maximumNumberOfGuests;
 
     private RegisteredGoodType registeredGoodType=RegisteredGoodType.HOUSE;
+
+
 
 }

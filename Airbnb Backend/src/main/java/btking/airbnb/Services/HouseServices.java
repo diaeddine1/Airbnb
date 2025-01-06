@@ -6,6 +6,7 @@ import btking.airbnb.Models.House;
 import btking.airbnb.Models.Image;
 import btking.airbnb.Repositories.HouseRepository;
 import btking.airbnb.Repositories.ImageRepository;
+import btking.airbnb.Repositories.LocationRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,8 @@ public class HouseServices implements Idao<House> {
     @Autowired
     private HouseDTOMapper houseDTOMapper;
 
+    @Autowired
+    private LocationRepository locationRepository;
 //    @Override
 //    public List<House> findAll() {
 //        return houseRepository.findAll();
@@ -48,14 +51,7 @@ public class HouseServices implements Idao<House> {
                 .map(houseDTOMapper)
                 .collect(Collectors.toList());
 
-//        String id,
-//        String title,
-//        Float price,
-//        String description,
-//        Float rating,
-//        String location,
-//        List<Image>images,
-//        Date registerDate
+
 
     }
 
@@ -93,6 +89,7 @@ public class HouseServices implements Idao<House> {
 //        }
 
         // Save the house
+        locationRepository.save(house.getLocation());
         return houseRepository.save(house);
     }
 

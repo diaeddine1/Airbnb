@@ -94,9 +94,16 @@
 //       });
 //   }
 // }
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AxiosService } from '../../Services/axios.service';
 import { FormsModule } from '@angular/forms';
+
+import 'ol/ol.css';
+import Map from 'ol/Map';
+import View from 'ol/View';
+import { OSM, XYZ } from 'ol/source';
+import TileLayer from 'ol/layer/Tile';
+import { fromLonLat } from 'ol/proj';
 
 // Define interface for the house metadata
 export interface AddedHouse {
@@ -104,10 +111,27 @@ export interface AddedHouse {
   price: number | null;
   description: string;
   rating: number | null;
-  location: string;
+  location: Location;
+  numberOfRooms:number,
+  numberOfFloors:number,
+  numberOfBathrooms:number,
+  maximumNumberOfGuests:number,
   files: File[]; // Images files to be uploaded
   registerDate: string; // ISO date string
 }
+
+
+export interface Location {
+  country:string,
+  city:string,
+  street:string
+}
+
+// export interface Position{
+//   latitude:string | null,
+//   longitude:string | null,
+
+// }
 
 @Component({
   selector: 'add-house',
@@ -115,19 +139,24 @@ export interface AddedHouse {
   templateUrl: './add-house.component.html',
   styleUrls: ['./add-house.component.css'],
 })
-export class AddHouseComponent {
+export class AddHouseComponent implements OnInit{
   // Initialize the house metadata
   addedHouse: AddedHouse = {
     title: '',
     price: null,
     description: '',
     rating: null,
-    location: '',
+    location: { country: '', city: '', street: '' },  
+    numberOfRooms:0,
+    numberOfFloors:0,
+    numberOfBathrooms:0,
+    maximumNumberOfGuests:0,
     files: [],
     registerDate: '',
   };
 
   constructor(private axiosService: AxiosService) {}
+  
 
   // Handle file input change (when images are selected)
   handleFileInput(event: Event): void {
@@ -156,7 +185,15 @@ export class AddHouseComponent {
       price: this.addedHouse.price,
       description: this.addedHouse.description,
       rating: this.addedHouse.rating,
-      location: this.addedHouse.location,
+      location:{
+        country:this.addedHouse.location.country,
+        city:this.addedHouse.location.city,
+        street:this.addedHouse.location.street
+      },
+      numberOfRooms:this.addedHouse.numberOfRooms,
+      numberOfFloors:this.addedHouse.numberOfFloors,
+      numberOfBathrooms:this.addedHouse.numberOfBathrooms,
+      maximumNumberOfGuests:this.addedHouse.maximumNumberOfGuests,
       registerDate: new Date().toISOString(),
     }));
 
@@ -174,4 +211,62 @@ export class AddHouseComponent {
         console.error('Error saving house:', error);
       });
   }
+
+  lat:any
+  lng:any
+  async getLocation():Promise<void>{
+    return new Promise((resolve,reject)=>{
+      if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition((position)=>{
+        if(position){
+          console.log("Latitude : " + position.coords.latitude + "Longitude :" + position.coords.longitude)
+          this.lat=position.coords.latitude 
+          this.lng = position.coords.longitude
+          resolve()
+        }
+        
+  
+      },(error)=>{
+        console.log(error);
+        reject(error);
+        })
+      }else{
+        console.log("Geolocation is not supported by this browser")
+        reject("Geolocation is not supported by this browser")
+      }
+    })
+
+    }
+    
+
+  public map!: Map
+  async initMap():Promise<void>{
+   try {
+     await this.getLocation()
+     this.map = new Map({
+       layers: [
+         new TileLayer({
+           source: new OSM(),
+         }),
+       ],
+       target: 'map',
+       view: new View({ 
+         // center: [this.lat, this.lng],
+         // center: [30.3771155 , -9.5141502],
+         center: fromLonLat([this.lng, this.lat]),
+         zoom: 15,maxZoom: 28, 
+       }),
+     });
+   } catch (error) {
+
+    
+    
+   }
+  }
+  ngOnInit(): void {
+    this.initMap()
+    // throw new Error('Method not implemented.');
+    
+  }
+  
 }
