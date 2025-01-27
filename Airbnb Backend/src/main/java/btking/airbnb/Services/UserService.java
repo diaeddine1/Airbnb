@@ -1,6 +1,7 @@
 package btking.airbnb.Services;
 
 
+import btking.airbnb.Exception.ResourceNotFound;
 import btking.airbnb.Models.User;
 import btking.airbnb.Models.UserPrincipal;
 import btking.airbnb.Repositories.UserRepository;
@@ -19,11 +20,11 @@ public class UserService {
     private UserRepository userRepository;
 
     public UserDetails LoginByEmailAndPassword(String email, String password) {
-        UserDetails userDetails = (UserDetails) userRepository.findByEmailAndPassword(email,password);
-        if (userDetails == null) {
-            return null;
-        }
-        return userDetails;
+        return userRepository.findByEmailAndPassword(email, password)
+                .map(UserPrincipal::new)
+                .orElseThrow(()->new ResourceNotFound("Invalid email or password!"));
+
+
     }
 
 
@@ -32,12 +33,10 @@ public class UserService {
     }
 
     public User getUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            System.out.println("User not found with username: " + username);
-            throw new UsernameNotFoundException("User with name : " + username + "not found");
-        }
-        return user;
+
+        return userRepository.findByUsername(username)
+                .orElseThrow(()-> new ResourceNotFound("UserService With the username [%s] not found!".formatted(username)));
+
 
     }
 

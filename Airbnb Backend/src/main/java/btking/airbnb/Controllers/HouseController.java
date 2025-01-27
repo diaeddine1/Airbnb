@@ -70,7 +70,7 @@ public class HouseController {
         }
         houseServices.delete(deleted_house);
     }
-    @GetMapping("/{title}")
+    @GetMapping("/title/{title}")
     public ResponseEntity<House> getHouse(@PathVariable String title) {
         House house = houseServices.getHouseByTitle(title);
         if(house==null){
@@ -97,9 +97,9 @@ public class HouseController {
         }
         return ResponseEntity.ok(houses);
     }
-    @GetMapping("/getall")
-    public ResponseEntity<List<HouseDTO>> getAllHouses() {
-        List<HouseDTO> houseDTOS = houseServices.getAll();
-        return ResponseEntity.ok(houseDTOS);
-    }
+//    @GetMapping("/getall")
+//    public ResponseEntity<List<HouseDTO>> getAllHouses() {
+//        List<HouseDTO> houseDTOS = houseServices.getAll();
+//        return ResponseEntity.ok(houseDTOS);
+//    }
 }

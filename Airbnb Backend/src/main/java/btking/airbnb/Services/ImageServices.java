@@ -1,6 +1,7 @@
 package btking.airbnb.Services;
 
 
+import btking.airbnb.Exception.ResourceNotFound;
 import btking.airbnb.IDao.Idao;
 import btking.airbnb.Models.House;
 import btking.airbnb.Models.Image;
@@ -86,7 +87,8 @@ public class ImageServices implements Idao<Image> {
 
     public Image getImageById(String id) {
 
-        return imageRepository.getImageById(id);
+        return imageRepository.getImageById(id)
+                .orElseThrow(()->new ResourceNotFound("Image With the id [%s] not found!".formatted(id)));
     }
 
 

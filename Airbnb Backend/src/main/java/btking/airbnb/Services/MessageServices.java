@@ -1,5 +1,6 @@
 package btking.airbnb.Services;
 
+import btking.airbnb.Exception.ResourceNotFound;
 import btking.airbnb.IDao.Idao;
 import btking.airbnb.Models.Message;
 import btking.airbnb.Repositories.MessageRepository;
@@ -29,7 +30,7 @@ public class MessageServices implements Idao<Message> {
 
     @Override
     public Message findById(String id) {
-        return messageRepository.findById(id).orElse(null);
+        return messageRepository.findById(id).orElseThrow(()-> new ResourceNotFound("Message With the id [%s] not found!".formatted(id)));
     }
 
     @Override

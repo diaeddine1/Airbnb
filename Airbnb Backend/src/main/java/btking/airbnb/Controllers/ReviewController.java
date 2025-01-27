@@ -48,11 +48,7 @@ public class ReviewController {
 
     @GetMapping("/{id}")
     public Review getReviewById(@PathVariable String id){
-        Review review = reviewServices.findById(id);
-        if(review == null){
-            return null;
-        }
-        return  review;
+        return  reviewServices.findById(id);
     }
 
     @GetMapping("/all")

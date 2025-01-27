@@ -1,5 +1,6 @@
 package btking.airbnb.Services;
 
+import btking.airbnb.Exception.ResourceNotFound;
 import btking.airbnb.IDao.Idao;
 import btking.airbnb.Models.Review;
 import btking.airbnb.Repositories.ReviewRepository;
@@ -29,7 +30,7 @@ public class ReviewServices implements Idao<Review> {
 
     @Override
     public Review findById(String id) {
-        return reviewRepository.findById(id).orElse(null);
+        return reviewRepository.findById(id).orElseThrow(()-> new ResourceNotFound("Review With the id [%s] not found!".formatted(id)));
     }
 
     @Override

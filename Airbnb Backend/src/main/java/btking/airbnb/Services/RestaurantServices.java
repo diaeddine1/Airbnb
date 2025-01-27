@@ -1,5 +1,6 @@
 package btking.airbnb.Services;
 
+import btking.airbnb.Exception.ResourceNotFound;
 import btking.airbnb.IDao.Idao;
 import btking.airbnb.Models.Restaurant;
 import btking.airbnb.Repositories.RestaurantRepository;
@@ -29,7 +30,7 @@ public class RestaurantServices implements Idao<Restaurant> {
 
     @Override
     public Restaurant findById(String id) {
-        return restaurantRepository.findById(id).orElse(null);
+        return restaurantRepository.findById(id).orElseThrow(()-> new ResourceNotFound("Restaurant With the id [%s] not found!".formatted(id)));
     }
 
     @Override

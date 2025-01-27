@@ -1,5 +1,6 @@
 package btking.airbnb.Services;
 
+import btking.airbnb.Exception.ResourceNotFound;
 import btking.airbnb.IDao.Idao;
 import btking.airbnb.Models.Comment;
 import btking.airbnb.Repositories.CommentRepository;
@@ -29,7 +30,7 @@ public class CommentServices implements Idao<Comment> {
 
     @Override
     public Comment findById(String id) {
-        return commentRepository.findById(id).orElse(null);
+        return commentRepository.findById(id).orElseThrow(()-> new ResourceNotFound("Comment With the id [%s] not found!".formatted(id)));
     }
 
     @Override

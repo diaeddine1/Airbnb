@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface HouseRepository extends MongoRepository<House, String> {
@@ -17,6 +18,6 @@ public interface HouseRepository extends MongoRepository<House, String> {
     @Override
     List<House> findAll();
     House getHouseByTitle(String title);
-    House getHouseById(String id);
+    Optional<House> getHouseById(String id);
 
 }

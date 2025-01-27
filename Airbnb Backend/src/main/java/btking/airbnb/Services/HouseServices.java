@@ -1,5 +1,6 @@
 package btking.airbnb.Services;
 import btking.airbnb.DTOS.HouseDTO;
+import btking.airbnb.Exception.ResourceNotFound;
 import btking.airbnb.IDao.Idao;
 import btking.airbnb.Mappers.HouseDTOMapper;
 import btking.airbnb.Models.House;
@@ -67,7 +68,8 @@ public class HouseServices implements Idao<House> {
 
     @Override
     public House findById(String id) {
-        return houseRepository.getHouseById(id);
+
+        return houseRepository.getHouseById(id).orElseThrow(()-> new ResourceNotFound("House With the id [%s] not found!".formatted(id)));
     }
 
     @Override

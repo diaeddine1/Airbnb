@@ -48,11 +48,9 @@ public class CommentController {
 
     @GetMapping("/{id}")
     public Comment getCommentById(@PathVariable String id){
-        Comment comment = commentServices.findById(id);
-        if(comment == null){
-            return null;
-        }
-        return  comment;
+
+        return commentServices.findById(id);
+
     }
 
     @GetMapping("/all")

@@ -1,6 +1,7 @@
 package btking.airbnb.Services;
 
 
+import btking.airbnb.Exception.ResourceNotFound;
 import btking.airbnb.Models.User;
 import btking.airbnb.Models.UserPrincipal;
 import btking.airbnb.Repositories.UserRepository;
@@ -17,12 +18,11 @@ public class UserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            System.out.println("User not found : "+username);
-            throw new UsernameNotFoundException(username);
 
-        }
-        return new UserPrincipal(user);
+        return userRepository.findByUsername(username)
+                .map(UserPrincipal::new)
+                .orElseThrow(()-> new ResourceNotFound("UserDetails With the username [%s] not found!".formatted(username)));
+
+
     }
 }

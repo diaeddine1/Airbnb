@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-//@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -30,17 +29,24 @@ public class UserController {
 
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/all")
     public List<User> getUserall() {
         List<User> users =  userService.getAllUsers();
         return users;
 
     }
-    @GetMapping("/get/{username}")
+
+    @GetMapping("/{username}")
     public User getUserv2(@PathVariable("username") String username) {
         User user =  userService.getUserByUsername(username);
         return user;
 
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody User user) {
+
+        return loginService.verify(user);
     }
 
 //    @PostMapping("/login")
@@ -53,10 +59,8 @@ public class UserController {
 //        return "You logged in using " +user.getEmail();
 //
 //    }
-    @PostMapping("/login")
-    public String login(@RequestBody User user) {
-        return loginService.verify(user);
-    }
+
+
     @PostMapping("/register")
     public User createUser(@RequestBody User user) {
         System.out.println(user.getEmail());
