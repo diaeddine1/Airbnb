@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CommentServices implements Idao<Comment> {
 
@@ -16,6 +18,28 @@ public class CommentServices implements Idao<Comment> {
     @Override
     public Comment save(Comment comment) {
         return commentRepository.save(comment);
+    }
+
+    public Optional<List<Comment>> saveAll(List<Comment> comments){
+        if(comments==null){
+            return Optional.empty();
+        }
+        int size = comments.size();
+        switch (size){
+            case 0:
+                return Optional.empty();
+            case 1:
+                save(comments.getFirst());
+                break;
+            default:
+                for (Comment comment : comments) {
+                    commentRepository.save(comment);
+                }
+                break;
+
+        }
+        return Optional.of(comments);
+
     }
 
     @Override

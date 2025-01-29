@@ -19,6 +19,8 @@ public class Review {
     @Id
     private String id;
 
+    private Integer rating;
+
     @DBRef
     private User user;
 

@@ -36,7 +36,12 @@ public class UserController {
 
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable String id){
+        return userService.findById(id);
+    }
+
+    @GetMapping("/username/{username}")
     public User getUserv2(@PathVariable("username") String username) {
         User user =  userService.getUserByUsername(username);
         return user;

@@ -27,6 +27,10 @@ public class UserService {
 
     }
 
+    public User findById(String id){
+        return userRepository.findById(id).orElseThrow(()-> new ResourceNotFound("User With the id [%s] not found!".formatted(id)));
+    }
+
 
     public User register(User user) {
         return userRepository.save(user);
