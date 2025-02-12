@@ -9,6 +9,7 @@ import btking.airbnb.Repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class ReviewServices implements Idao<Review> {
@@ -26,10 +27,21 @@ public class ReviewServices implements Idao<Review> {
 
     @Override
     public Review save(Review review) {
-        review.setUser(userService.findById(review.getUser().getId()));
+        User user = userService.findById(review.getUser().getId());
+        if (user.getReviews()==null){
+            user.setReviews(new ArrayList<>());
+        }
+        user.getReviews().add(review);
+        userService.update(user);
+
         commentServices.saveAll(review.getComment());
+
+        userService.update(review.getUser());
+
         return reviewRepository.save(review);
-    } 
+    }
+
+
 
 
     @Override

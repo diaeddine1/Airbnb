@@ -2,6 +2,8 @@ package btking.airbnb.Models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +14,15 @@ import java.util.Date;
 import java.util.List;
 
 
-
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = House.class, name = "house"),
+        @JsonSubTypes.Type(value = Restaurant.class, name = "restaurant")
+})
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisteredGood {
+public abstract class RegisteredGood {
 
     @Id
     private String id;

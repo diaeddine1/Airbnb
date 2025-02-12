@@ -7,6 +7,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Document(collection = "Dishes")
 @Data
 @AllArgsConstructor
@@ -17,7 +19,10 @@ public class Dish {
 
     @Id
     private String id;
+
     private String name;
+    private String description;
+    private List<String> ingredients;
 
     @DBRef
     private Restaurant restaurant;

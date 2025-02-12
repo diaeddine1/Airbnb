@@ -2,6 +2,8 @@ package btking.airbnb.Services;
 
 
 import btking.airbnb.Exception.ResourceNotFound;
+import btking.airbnb.IDao.Idao;
+import btking.airbnb.Models.Review;
 import btking.airbnb.Models.User;
 import btking.airbnb.Models.UserPrincipal;
 import btking.airbnb.Repositories.UserRepository;
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService implements Idao<User> {
 
     @Autowired
     private UserRepository userRepository;
@@ -27,14 +29,39 @@ public class UserService {
 
     }
 
+    @Override
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User update(User user) {
+        return userRepository.save(user);
+    }
+
+
+
+    @Override
+    public void delete(User user) {
+        userRepository.delete(user);
+
+    }
+
     public User findById(String id){
         return userRepository.findById(id).orElseThrow(()-> new ResourceNotFound("User With the id [%s] not found!".formatted(id)));
     }
 
+    @Override
+    public List<User> findAll() throws UsernameNotFoundException{
+        List<User> users = userRepository.findAll();
+        if (users == null) {
+            System.out.println("Users not found");
+            throw new UsernameNotFoundException("Users not found");
+        }
+        return users;
 
-    public User register(User user) {
-        return userRepository.save(user);
     }
+
 
     public User getUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -44,12 +71,4 @@ public class UserService {
 
     }
 
-    public List<User> getAllUsers() throws UsernameNotFoundException {
-        List<User> users = userRepository.findAll();
-        if (users == null) {
-            System.out.println("Users not found");
-            throw new UsernameNotFoundException("Users not found");
-        }
-        return users;
-    }
 }

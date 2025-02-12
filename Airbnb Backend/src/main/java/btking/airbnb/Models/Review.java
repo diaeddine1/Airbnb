@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
 
@@ -23,6 +24,9 @@ public class Review {
 
     @DBRef
     private User user;
+
+    @DocumentReference(lazy = true)  // Properly references a polymorphic class
+    private RegisteredGood registeredGood;
 
     @DBRef
     private List<Comment> comment;

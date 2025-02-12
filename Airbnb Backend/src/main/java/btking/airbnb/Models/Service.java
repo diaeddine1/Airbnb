@@ -12,6 +12,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Service {
+
     @Id
     private String id;
+
 }

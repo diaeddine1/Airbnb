@@ -31,8 +31,8 @@ public class UserController {
 
     @GetMapping("/all")
     public List<User> getUserall() {
-        List<User> users =  userService.getAllUsers();
-        return users;
+        return userService.findAll();
+
 
     }
 
@@ -70,7 +70,7 @@ public class UserController {
     public User createUser(@RequestBody User user) {
         System.out.println(user.getEmail());
         user.setPassword(Bcrypt_encoder.encode(user.getPassword()));
-        userService.register(user);
+        userService.save(user);
         return user;
     }
 

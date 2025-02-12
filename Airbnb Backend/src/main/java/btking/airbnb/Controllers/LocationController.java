@@ -3,6 +3,7 @@ package btking.airbnb.Controllers;
 
 import btking.airbnb.Models.House;
 import btking.airbnb.Models.Location;
+import btking.airbnb.Services.DishServices;
 import btking.airbnb.Services.LocationServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +19,11 @@ public class LocationController {
     @Autowired
     private LocationServices locationServices;
 
+
     @PostMapping("/add")
     public Location addLocation(@RequestBody Location location){
         Location added_location = locationServices.save(location);
+
         if(added_location == null){
             return null;
         }
