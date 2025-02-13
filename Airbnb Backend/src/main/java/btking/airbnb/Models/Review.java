@@ -1,6 +1,7 @@
 package btking.airbnb.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -20,12 +21,12 @@ public class Review {
     @Id
     private String id;
 
-    private Integer rating;
-
+    private Double rating;
+    @JsonBackReference
     @DBRef
     private User user;
 
-    @DocumentReference(lazy = true)  // Properly references a polymorphic class
+    @DBRef
     private RegisteredGood registeredGood;
 
     @DBRef

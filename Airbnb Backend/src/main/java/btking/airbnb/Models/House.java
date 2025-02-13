@@ -12,7 +12,7 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
-@Document(collection = "Houses")
+@Document(collection = "Real Estate")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

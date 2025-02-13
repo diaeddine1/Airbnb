@@ -1,6 +1,7 @@
 package btking.airbnb.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -26,6 +27,7 @@ public class User {
     @DBRef
     private List<Message> message;
 
+    @JsonManagedReference
     @DBRef
     private List<Review> reviews;
 

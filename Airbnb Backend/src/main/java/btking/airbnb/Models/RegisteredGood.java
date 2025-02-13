@@ -9,15 +9,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 import java.util.List;
 
 
+@Document(collection = "Real Estate")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = House.class, name = "house"),
-        @JsonSubTypes.Type(value = Restaurant.class, name = "restaurant")
+        @JsonSubTypes.Type(value = House.class, name = "HOUSE"),
+        @JsonSubTypes.Type(value = Restaurant.class, name = "RESTAURANT")
 })
 @Data
 @AllArgsConstructor

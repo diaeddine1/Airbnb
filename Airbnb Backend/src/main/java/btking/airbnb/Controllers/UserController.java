@@ -2,6 +2,7 @@ package btking.airbnb.Controllers;
 
 
 
+import btking.airbnb.Models.Review;
 import btking.airbnb.Models.User;
 import btking.airbnb.Services.LoginService;
 import btking.airbnb.Services.UserService;
@@ -52,6 +53,25 @@ public class UserController {
     public String login(@RequestBody User user) {
 
         return loginService.verify(user);
+    }
+
+    @PutMapping("/update/{id}")
+    public User updateUser(@RequestBody User user, @PathVariable(required = true) String id){
+        User updated_user=userService.findById(id);
+       // updated_user.setReviews(user.getReviews());
+        if(updated_user==null){
+            return null;
+        }
+        return userService.update(updated_user);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteUser(@PathVariable(required = true) String id){
+        User deleted_user = userService.findById(id);
+        if(deleted_user == null){
+            System.out.println("Cannot find review with id to delete it : "+id);
+        }
+        userService.delete(deleted_user);
     }
 
 //    @PostMapping("/login")
